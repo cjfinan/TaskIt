@@ -1,0 +1,21 @@
+.Sidebar{
+    min-height: 100vh;
+    min-width: 60px;
+    flex-direction: column;
+    background-color: rgb(23, 138, 247);
+}
+
+.NavLink{
+    color: white;
+    margin-top: 3rem;
+}
+
+.NavLink:hover{
+    cursor: pointer;
+    transition: color ease-in-out 0.2s;
+    color: purple;
+}
+
+.logo{
+    
+}
