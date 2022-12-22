@@ -9,13 +9,14 @@
     width: 100vw;
 }
 
-/* .Secondary{
-    margin-left: 0;
-    padding-left: 0;
-} */
-
 i {
     font-size: 1.6rem;
     padding: 7px;
     vertical-align: middle;
+}
+
+.col{
+    margin: 0;
+    margin-left: 0;
+    padding-left: 0;
 }

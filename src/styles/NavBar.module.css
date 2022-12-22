@@ -11,6 +11,7 @@
 .NavLink{
     color: white;
     margin-top: 3rem;
+    padding-left: 5px;
 }
 
 .NavLink:hover{
@@ -19,8 +20,12 @@
     color: purple;
 }
 
+.Active{
+    color: red;
+}
+
 .logo{
-    
+    margin-left: 10px;
 }
 
 .Col{

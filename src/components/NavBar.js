@@ -1,7 +1,8 @@
 import React from "react";
-import { Col, Container, Nav, NavLink, Row } from "react-bootstrap";
+import { Col, Nav, Row } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import logo from "../assets/GhostWhite.png";
+import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const loggedInIcons = (
     <>
@@ -28,15 +29,28 @@ const NavBar = () => {
 
   const loggedOutIcons = (
     <>
-      <NavLink className={styles.NavLink}>
+      <NavLink
+        to="/"
+        exact
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
         <i className="fas fa-home"></i>
         <span className="d-none d-sm-inline">Home</span>
       </NavLink>
-      <NavLink className={styles.NavLink}>
+      <NavLink
+        to="/signin"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
         <i className="fas fa-sign-in-alt"></i>
         <span className="d-none d-sm-inline">Sign in</span>
       </NavLink>
-      <NavLink className={styles.NavLink}>
+      <NavLink
+        to="/signup"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
         <i className="fas fa-user-plus"></i>
         <span className="d-none d-sm-inline">Sign up</span>
       </NavLink>
@@ -46,7 +60,7 @@ const NavBar = () => {
     <Row>
       <Col xs={8} className={styles.Col}>
         <Nav className={styles.Sidebar}>
-          <NavLink>
+          <NavLink to="/">
             <img src={logo} alt="logo" height="45" className={styles.logo} />
           </NavLink>
           {loggedOutIcons}
