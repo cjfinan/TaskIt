@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, NavbarBrand, NavLink, Row } from "react-bootstrap";
+import { Col, Container, Nav, NavLink, Row } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import logo from "../assets/GhostWhite.png";
 const NavBar = () => {
@@ -29,6 +29,10 @@ const NavBar = () => {
   const loggedOutIcons = (
     <>
       <NavLink className={styles.NavLink}>
+        <i className="fas fa-home"></i>
+        <span className="d-none d-sm-inline">Home</span>
+      </NavLink>
+      <NavLink className={styles.NavLink}>
         <i className="fas fa-sign-in-alt"></i>
         <span className="d-none d-sm-inline">Sign in</span>
       </NavLink>
@@ -39,16 +43,16 @@ const NavBar = () => {
     </>
   );
   return (
-    <Container className="m-0">
-      <Row>
+    <Row>
+      <Col xs={8} className={styles.Col}>
         <Nav className={styles.Sidebar}>
           <NavLink>
             <img src={logo} alt="logo" height="45" className={styles.logo} />
           </NavLink>
           {loggedOutIcons}
         </Nav>
-      </Row>
-    </Container>
+      </Col>
+    </Row>
   );
 };
 

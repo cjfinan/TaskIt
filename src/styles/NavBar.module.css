@@ -2,7 +2,10 @@
     min-height: 100vh;
     min-width: 60px;
     flex-direction: column;
+    display: flex;
     background-color: rgb(23, 138, 247);
+    margin-left: 10px;
+    padding-left: 0;
 }
 
 .NavLink{
@@ -18,4 +21,9 @@
 
 .logo{
     
+}
+
+.Col{
+    padding-left: 0;
+    padding-right: 0;
 }
