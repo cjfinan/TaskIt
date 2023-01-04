@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Button, Form, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useSetCurrentUser } from "../../components/context/CurrentUserContext";
 
 const SignInForm = () => {
+  
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
