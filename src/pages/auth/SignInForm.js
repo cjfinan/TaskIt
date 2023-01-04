@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useSetCurrentUser } from "../../components/context/CurrentUserContext";
 
 const SignInForm = () => {
+  const setCurrentUser = useSetCurrentUser();
   
   const [signInData, setSignInData] = useState({
     username: "",
@@ -28,6 +29,7 @@ const SignInForm = () => {
     event.preventDefault();
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user)
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);

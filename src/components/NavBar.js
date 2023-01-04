@@ -3,25 +3,36 @@ import { Col, Nav, Row } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import logo from "../assets/GhostWhite.png";
 import { NavLink } from "react-router-dom";
+import { useCurrentUser, useSetCurrentUser } from "./context/CurrentUserContext";
+import axios from "axios";
 const NavBar = () => {
+  const setCurrentUser = useSetCurrentUser();
+
+  const handleSignOut = async () => {
+    try {
+      await axios.post('dj-rest-auth/logout/')
+      setCurrentUser(null)
+    }catch (err){
+      console.log(err)
+    }
+  }
+  const currentUser = useCurrentUser()
   const loggedInIcons = (
     <>
-      <NavLink href="" className={styles.NavLink}>
-        <i className="fa-solid fa-list"></i> Profil
+      <NavLink to="/" className={styles.NavLink}>
+        <img src={currentUser?.profile_id}/>
+         {currentUser?.username}
       </NavLink>
-      <NavLink href="" className={styles.NavLink}>
+      <NavLink to="/" className={styles.NavLink}>
         <i className="fa-solid fa-list"></i> Tasks
       </NavLink>
-      <NavLink href="" className={styles.NavLink}>
+      <NavLink to="/" className={styles.NavLink}>
         <i className="fa-solid fa-chalkboard"></i> Boards
       </NavLink>
-      <NavLink href="" className={styles.NavLink}>
-        <i className="fa-solid fa-user"></i> Profile
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
-      <NavLink href="" className={styles.NavLink}>
-        Logout
-      </NavLink>
-      <NavLink href="" className={styles.NavLink}>
+      <NavLink to="/" className={styles.NavLink}>
         <i className="fa-solid fa-gear"></i>
       </NavLink>
     </>
@@ -63,7 +74,7 @@ const NavBar = () => {
           <NavLink to="/">
             <img src={logo} alt="logo" height="45" className={styles.logo} />
           </NavLink>
-          {loggedOutIcons}
+          {currentUser ? loggedInIcons : loggedOutIcons}
         </Nav>
       </Col>
     </Row>
