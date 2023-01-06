@@ -11,7 +11,7 @@ function App() {
     <div className={styles.App}>
       <Container fluid>
         <Row>
-          <Col xs={3} className={styles.col}>
+          <Col xs={2} md={3} className={styles.col}>
             <NavBar />
           </Col>
           <Switch>

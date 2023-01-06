@@ -5,6 +5,7 @@ import logo from "../assets/GhostWhite.png";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from "./context/CurrentUserContext";
 import axios from "axios";
+import { Avatar } from "./Avatar";
 const NavBar = () => {
   const setCurrentUser = useSetCurrentUser();
 
@@ -20,17 +21,22 @@ const NavBar = () => {
   const loggedInIcons = (
     <>
       <NavLink to="/" className={styles.NavLink}>
-        <img src={currentUser?.profile_id}/>
-         {currentUser?.username}
+        <Avatar src={currentUser?.profile_image} height={40} />
+      </NavLink>
+      <NavLink to="/" className={styles.Navlink}>
+        <span className="d-none d-md-inline">{currentUser?.username}</span>
       </NavLink>
       <NavLink to="/" className={styles.NavLink}>
-        <i className="fa-solid fa-list"></i> Tasks
+        <i className="fa-solid fa-list"></i>
+        <span className="d-none d-md-inline">Tasks</span>
       </NavLink>
       <NavLink to="/" className={styles.NavLink}>
-        <i className="fa-solid fa-chalkboard"></i> Boards
+        <i className="fa-solid fa-chalkboard"></i>
+        <span className="d-none d-md-inline">Boards</span>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
+        <i className="fas fa-sign-out-alt"></i>
+        <span className="d-none d-md-inline">Sign out</span>
       </NavLink>
       <NavLink to="/" className={styles.NavLink}>
         <i className="fa-solid fa-gear"></i>
@@ -47,7 +53,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
       >
         <i className="fas fa-home"></i>
-        <span className="d-none d-sm-inline">Home</span>
+        <span className="d-none d-md-inline">Home</span>
       </NavLink>
       <NavLink
         to="/signin"
@@ -55,7 +61,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
       >
         <i className="fas fa-sign-in-alt"></i>
-        <span className="d-none d-sm-inline">Sign in</span>
+        <span className="d-none d-md-inline">Sign in</span>
       </NavLink>
       <NavLink
         to="/signup"
@@ -63,7 +69,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
       >
         <i className="fas fa-user-plus"></i>
-        <span className="d-none d-sm-inline">Sign up</span>
+        <span className="d-none d-md-inline">Sign up</span>
       </NavLink>
     </>
   );
