@@ -26,7 +26,7 @@ const NavBar = () => {
       <NavLink to="/" className={styles.Navlink}>
         <span className="d-none d-md-inline">{currentUser?.username}</span>
       </NavLink>
-      <NavLink to="/" className={styles.NavLink}>
+      <NavLink to="/tasks/create" className={styles.NavLink}>
         <i className="fa-solid fa-list"></i>
         <span className="d-none d-md-inline">Tasks</span>
       </NavLink>
@@ -75,7 +75,10 @@ const NavBar = () => {
   );
   return (
     <Row>
-      <Col xs={8} className={styles.Col}>
+      <Col
+        xs={8}
+        className={styles.Col}
+      >
         <Nav className={styles.Sidebar}>
           <NavLink to="/">
             <img src={logo} alt="logo" height="45" className={styles.logo} />
