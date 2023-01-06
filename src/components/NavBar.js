@@ -26,7 +26,7 @@ const NavBar = () => {
       <NavLink to="/" className={styles.Navlink}>
         <span className="d-none d-md-inline">{currentUser?.username}</span>
       </NavLink>
-      <NavLink to="/tasks/create" className={styles.NavLink}>
+      <NavLink to="/tasks/:id" className={styles.NavLink}>
         <i className="fa-solid fa-list"></i>
         <span className="d-none d-md-inline">Tasks</span>
       </NavLink>

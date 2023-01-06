@@ -91,7 +91,7 @@ const TaskCreateForm = () => {
             value={start_date}
           ></Form.Control>
         </Form.Group>
-        {errors?.startDate?.map((message, idx) => (
+        {errors?.start_date?.map((message, idx) => (
           <Alert key={idx} variant="warning">
             {message}
           </Alert>
@@ -106,7 +106,7 @@ const TaskCreateForm = () => {
             value={end_date}
           ></Form.Control>
         </Form.Group>
-        {errors?.endDate?.map((message, idx) => (
+        {errors?.end_date?.map((message, idx) => (
           <Alert key={idx} variant="warning">
             {message}
           </Alert>
