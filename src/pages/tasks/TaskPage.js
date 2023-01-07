@@ -14,7 +14,7 @@ const TaskPage = () => {
                 const [{ data: task}] = await Promise.all([
                     axiosReq.get(`/tasks/${id}`),
                 ])
-                setTask({result: [task] })
+                setTask({results: [task] })
                 console.log(task)
             } catch (err) {
                 console.log(err)
@@ -22,9 +22,7 @@ const TaskPage = () => {
         }
         handleMount()
     }, [id])
-  return (
-    <Task/>
-  );
+  return <Task {...task.results[0]} setPosts={setTask} TaskPage/>;
 }
 
 export default TaskPage
