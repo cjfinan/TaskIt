@@ -10,17 +10,18 @@ const TasksPage = ({ filter }) => {
   const [hasLoaded, setHasLoaded] = useState(false);
 
   const history = useHistory()
-  const [query, setQuery] = useState("");
+  const [status, setStatus] = useState("");
   const {pathname} = useLocation
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const { data } = await axiosReq.get(`/tasks/?${filter}`);
+        const { data } = await axiosReq.get(`/tasks/?${filter}&${status}`);
         setTasks(data);
         setHasLoaded(true);
         console.log(data);
         console.log(filter);
+        console.log(status)
       } catch (err) {
         console.log(err);
       }
@@ -32,7 +33,7 @@ const TasksPage = ({ filter }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname]);
+  }, [filter, status, pathname]);
 
   const handleCreate = (()=>{
     history.push('/tasks/create')
@@ -70,13 +71,28 @@ const TasksPage = ({ filter }) => {
       </Row>
       <Row>
         <Col xs={2}>
-          <p>ToDo</p>
+          <Button
+            onClick={(event) => setStatus(event.target.value)}
+            value={`status__to_do`}
+          >
+            To Do
+          </Button>
         </Col>
         <Col xs={2}>
-          <p>In Progress</p>
+          <Button
+            onClick={(event) => setStatus(event.target.value)}
+            value={`status__in_progress`}
+          >
+            In Progress
+          </Button>
         </Col>
         <Col xs={2}>
-          <p>Completed</p>
+          <Button
+            onClick={(event) => setStatus(event.target.value)}
+            value={`status__completed`}
+          >
+            Completed
+          </Button>
         </Col>
       </Row>
       <Row>
