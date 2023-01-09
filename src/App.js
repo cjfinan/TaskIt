@@ -8,8 +8,11 @@ import SignInForm from "./pages/auth/SignInForm";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import TaskPage from "./pages/tasks/TaskPage";
 import TasksPage from "./pages/tasks/TasksPage";
+import { useCurrentUser } from "./components/context/CurrentUserContext";
 
 function App() {
+  const currentUser = useCurrentUser()
+  const profile_id = currentUser?.profile_id || "";
   return (
     <div className={styles.App}>
       <Container fluid>
@@ -22,13 +25,19 @@ function App() {
               <Route exact path="/" render={() => <h1>Home</h1>} />
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
-              <Route exact path="/tasks/" render={() => <TasksPage />} />
+              <Route
+                exact
+                path="/tasks/"
+                render={() => (
+                  <TasksPage filter={`owner__profile=${profile_id}`} />
+                )}
+              />
               <Route exact path="/tasks/:id" render={() => <TaskPage />} />
-              {/* <Route
+              <Route
                 exact
                 path="/tasks/create"
                 render={() => <TaskCreateForm />}
-              /> */}
+              />
             </Col>
           </Switch>
         </Row>

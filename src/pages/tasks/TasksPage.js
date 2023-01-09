@@ -1,7 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row, Card, Button, Container } from 'react-bootstrap'
+import { useHistory, useLocation } from 'react-router-dom';
 
-const TasksPage = () => {
+import { axiosReq } from '../../api/axiosDefaults';
+import Task from './Task';
+
+const TasksPage = ({ filter }) => {
+  const [tasks, setTasks] = useState({ results: [] });
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  const history = useHistory()
+  const [query, setQuery] = useState("");
+  const {pathname} = useLocation
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const { data } = await axiosReq.get(`/tasks/?${filter}`);
+        setTasks(data);
+        setHasLoaded(true);
+        console.log(data);
+        console.log(filter);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      fetchTasks();
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filter, query, pathname]);
+
+  const handleCreate = (()=>{
+    history.push('/tasks/create')
+    })
+
   return (
     <Container fluid>
       <Row>
@@ -29,7 +65,7 @@ const TasksPage = () => {
           <h3>Tasks</h3>
         </Col>
         <Col xs={4}>
-          <Button>Create Task</Button>
+          <Button onClick={handleCreate}>Create Task</Button>
         </Col>
       </Row>
       <Row>
@@ -45,6 +81,11 @@ const TasksPage = () => {
       </Row>
       <Row>
         <hr></hr>
+        <Col>
+          {tasks.results.map((task) => (
+            <Task key={task.id} {...task} setTasks={setTasks} />
+          ))}
+        </Col>
       </Row>
     </Container>
   );
