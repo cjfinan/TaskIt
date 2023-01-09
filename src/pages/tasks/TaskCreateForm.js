@@ -12,7 +12,7 @@ const TaskCreateForm = () => {
         startDate: "",
         endDate: "",
         status: "",
-        priority: "",
+        priority: "", 
       });
     const { title, description, start_date, end_date, status, priority } = taskData;
 
@@ -23,6 +23,7 @@ const TaskCreateForm = () => {
         ...taskData,
         [event.target.name]: event.target.value,
         });
+        console.log(setTaskData)
     };
 
     const handleSubmit = async (event) => {
@@ -118,10 +119,15 @@ const TaskCreateForm = () => {
       <div>
         <Form.Group>
           <Form.Label>Status</Form.Label>
-          <Form.Control as="select" onChange={handleChange} value={status} name={status}>
-            <option>ToDo</option>
-            <option>In Progress</option>
-            <option>Completed</option>
+          <Form.Control
+            as="select"
+            onChange={handleChange}
+            name="status"
+            value={status}
+          >
+            <option>to_do</option>
+            <option>in_progress</option>
+            <option>completed</option>
           </Form.Control>
         </Form.Group>
         {errors?.status?.map((message, idx) => (
@@ -132,10 +138,15 @@ const TaskCreateForm = () => {
 
         <Form.Group>
           <Form.Label>Priority</Form.Label>
-          <Form.Control as="select" onChange={handleChange} value={priority} name={priority}>
-            <option>Normal</option>
-            <option>Low</option>
-            <option>High</option>
+          <Form.Control
+            as="select"
+            onChange={handleChange}
+            value={priority}
+            name="priority"
+          >
+            <option>2</option>
+            <option>1</option>
+            <option>3</option>
           </Form.Control>
         </Form.Group>
         {errors?.priority?.map((message, idx) => (
