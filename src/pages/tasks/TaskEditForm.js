@@ -12,7 +12,7 @@ const TaskEditForm = () => {
         status: "",
         priority: "",
       });
-    const { title, description, status, priority } = taskData;
+    const { title, description, status, priority, start_date, end_date } = taskData;
 
     const history = useHistory();
     const { id } = useParams()
@@ -21,8 +21,8 @@ const TaskEditForm = () => {
         const handleMount = async () => {
             try {
                 const {data} = await axiosReq.get(`/tasks/${id}/`);
-                const {title, description, status, priority, is_owner} = data
-                is_owner? setTaskData({ title, description, status, priority }) : history.push("/");
+                const {title, description, status, priority, is_owner, start_date, end_date} = data
+                is_owner? setTaskData({ title, description, status, priority, start_date, end_date }) : history.push("/");
             } catch (err) {
                 console.log(err)
             }
@@ -46,6 +46,8 @@ const TaskEditForm = () => {
       formData.append("description", description);
       formData.append("status", status);
       formData.append("priority", priority);
+      formData.append("start_date", start_date);
+      formData.append("end_date", end_date);
       try {
         await axiosReq.put(`/tasks/${id}/`, formData);
         history.push(`/tasks/${id}`);
