@@ -19,9 +19,9 @@ const TasksPage = ({ filter }) => {
         const { data } = await axiosReq.get(`/tasks/?${filter}&${status}`);
         setTasks(data);
         setHasLoaded(true);
-        console.log(data);
-        console.log(filter);
-        console.log(status)
+        console.log(`Data: ${data}`);
+        console.log(`Filter: ${filter}`);
+        console.log(`Status: ${status}`)
       } catch (err) {
         console.log(err);
       }
@@ -73,7 +73,7 @@ const TasksPage = ({ filter }) => {
         <Col xs={2}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
-            value={`status__to_do`}
+            value='status=to_do'
           >
             To Do
           </Button>
@@ -81,7 +81,7 @@ const TasksPage = ({ filter }) => {
         <Col xs={2}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
-            value={`status__in_progress`}
+            value='status=in_progress'
           >
             In Progress
           </Button>
@@ -89,7 +89,7 @@ const TasksPage = ({ filter }) => {
         <Col xs={2}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
-            value={`status__completed`}
+            value='status=completed'
           >
             Completed
           </Button>
