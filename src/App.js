@@ -11,6 +11,7 @@ import TasksPage from "./pages/tasks/TasksPage";
 import { useCurrentUser } from "./components/context/CurrentUserContext";
 import TaskEditForm from "./pages/tasks/TaskEditForm";
 import BoardsPage from "./pages/boards/BoardsPage";
+import BoardCreateForm from "./pages/boards/BoardCreateForm";
 
 function App() {
   const currentUser = useCurrentUser()
@@ -46,6 +47,7 @@ function App() {
                 render={() => <TaskCreateForm />}
               />
               <Route exact path="/boards/" render={() => <BoardsPage />} />
+              <Route exact path="/boards/create" render={() => <BoardCreateForm/>} />
             </Col>
           </Switch>
         </Row>

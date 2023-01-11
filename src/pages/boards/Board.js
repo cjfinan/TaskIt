@@ -1,5 +1,7 @@
 import React from 'react'
 import { Card, Col, Row} from 'react-bootstrap'
+import { useHistory } from 'react-router-dom';
+import { useCurrentUser } from '../../components/context/CurrentUserContext';
 
 const Board = (props) => {
     const {
