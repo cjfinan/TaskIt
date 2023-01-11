@@ -30,7 +30,7 @@ const NavBar = () => {
         <i className="fa-solid fa-list"></i>
         <span className="d-none d-md-inline">Tasks</span>
       </NavLink>
-      <NavLink to="/" className={styles.NavLink}>
+      <NavLink to="/boards/" className={styles.NavLink}>
         <i className="fa-solid fa-chalkboard"></i>
         <span className="d-none d-md-inline">Boards</span>
       </NavLink>
