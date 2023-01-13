@@ -3,13 +3,16 @@
     min-width: 60px;
     flex-direction: column;
     display: flex;
-    background-color: rgba(173, 62, 247, 0.8);
+    /* background-image: linear-gradient(20deg, #17252a, #2b7a78, #3aafa9); */
+    background-color: #3aafa9;
+    background-color: #23395b;
     margin-left: 10px;
     padding-left: 0;
+    box-shadow: 3px 0 3px -1px #17252a;
 }
 
 .NavLink{
-    color: white;
+    color: #fffd98;
     margin-top: 3rem;
     padding-left: 5px;
 }
@@ -17,7 +20,7 @@
 .NavLink:hover{
     cursor: pointer;
     transition: color ease-in-out 0.2s;
-    color: purple;
+    color: #d81e5b;
 }
 
 .Active{

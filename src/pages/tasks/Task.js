@@ -3,6 +3,7 @@ import { Card, Col, Row } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../components/context/CurrentUserContext';
+import styles from '../../styles/Task.module.css'
 
 const Task = (props) => {
     const {
@@ -39,7 +40,7 @@ const Task = (props) => {
     };
 
   return (
-    <Card>
+    <Card className={styles.TaskCard}>
       <Row>
         <Col>{title && <Card.Title>{title}</Card.Title>}</Col>
       </Row>

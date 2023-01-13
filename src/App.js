@@ -46,8 +46,18 @@ function App() {
                 path="/tasks/create"
                 render={() => <TaskCreateForm />}
               />
-              <Route exact path="/boards/" render={() => <BoardsPage />} />
-              <Route exact path="/boards/create" render={() => <BoardCreateForm/>} />
+              <Route
+                exact
+                path="/boards/"
+                render={() => (
+                  <BoardsPage filter={`owner__profile=${profile_id}`} />
+                )}
+              />
+              <Route
+                exact
+                path="/boards/create"
+                render={() => <BoardCreateForm />}
+              />
             </Col>
           </Switch>
         </Row>

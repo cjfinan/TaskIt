@@ -1,0 +1,35 @@
+.heading{
+    color: #23395b;
+}
+
+.GreenCard {
+    background-image: linear-gradient(20deg, #b9e3c6, #fffd98);
+    /* background-color: #17252a; */
+    color: #23395b;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    min-height: 150px;
+    border-radius: 15px;
+    border: 0.5px solid #23395b;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btnCreate{
+    /* background-image: linear-gradient(20deg, #17252a, #2b7a78); */
+    background-color: #23395b;
+    border-radius: 15px;
+    color: #fffd98;
+}
+
+.btnStatus{
+    background-color: #59c9a5;
+    color: #23395b;
+    border-radius: 15px;
+    margin: 10px;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+}
+

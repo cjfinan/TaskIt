@@ -1,13 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import { axiosReq } from '../../api/axiosDefaults';
 import Board from "./Board";
 
-const BoardsPage = () => {
+const BoardsPage = ({filter}) => {
+  const [boards, setBoards] = useState({ results: [] });
+  const [hasLoaded, setHasLoaded] = useState(false);
+
   const history = useHistory();
+  const { pathname } = useLocation();
+
   const handleCreate = () => {
     history.push("/boards/create");
   };
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const { data } = await axiosReq.get(`/boards/?${filter}`);
+        setBoards(data);
+        setHasLoaded(true);
+        console.log(`Data: ${data}`);
+        console.log(`Filter: ${filter}`);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      fetchTasks();
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filter, pathname]);
 
   return (
     <Container fluid>
@@ -15,7 +42,13 @@ const BoardsPage = () => {
         <Col>
           <Button onClick={handleCreate}> Create Board </Button>
         </Col>
-        <Board />
+      </Row>
+      <Row>
+        <Col>
+          {boards.results.map((board) => (
+            <Board key={board.id} {...board} setBoards={setBoards} />
+          ))}
+        </Col>
       </Row>
     </Container>
   );
