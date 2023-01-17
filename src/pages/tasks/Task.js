@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Col, Row } from "react-bootstrap";
+import { DropdownMenu } from '../../components/DropdownMenu';
 import { useHistory } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../components/context/CurrentUserContext';
@@ -43,20 +44,14 @@ const Task = (props) => {
     <Card className={styles.TaskCard}>
       <Row>
         <Col>{title && <Card.Title>{title}</Card.Title>}</Col>
-      </Row>
-      <Row>
-        {description && <Col> {description}</Col>}
         {status && <Col>{status}</Col>}
         {priority && <Col>{priority}</Col>}
         {board && <Col>{board}</Col>}
-        {start_date && <Col>{start_date}</Col>}
         {end_date && <Col>{end_date}</Col>}
-        {is_owner && (
+        {is_owner &&
           <Col>
-            <i className="fas fa-edit" onClick={handleEdit}></i>
-            <i className="fas fa-trash-alt" onClick={handleDelete}></i>
-          </Col>
-        )}
+            <DropdownMenu handleEdit={handleEdit} handleDelete={handleDelete} />
+          </Col>}
       </Row>
     </Card>
   );
