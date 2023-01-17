@@ -8,22 +8,29 @@ import Task from './Task';
 
 const TasksPage = ({ filter }) => {
   const [tasks, setTasks] = useState({ results: [] });
+  const [toDoTasks, setToDoTasks] = useState([])
+  const [inProgressTasks, setInProgressTasks] = useState([])
+  const [completedTasks, setCompletedTasks] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
   const [status, setStatus] = useState("");
-  const {pathname} = useLocation()
+  const [filteredTasks, setFilteredTasks] = useState([])
+
+  useEffect(() => {
+    setToDoTasks(tasks.results.filter((task) => task.status === "to_do"));
+    setInProgressTasks(tasks.results.filter((task) => task.status === "in_progress"));
+    setCompletedTasks(tasks.results.filter((task) => task.status === "completed"));
+    setFilteredTasks(tasks.results);
+  }, [tasks]);
+
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const { data } = await axiosReq.get(`/tasks/?${filter}&${status}`);
+        const { data } = await axiosReq.get(`/tasks/?${filter}`);
         setTasks(data);
         setHasLoaded(true);
-        console.log(`Data: ${data}`);
-        console.log(data);
-        console.log(`Filter: ${filter}`);
-        console.log(`Status: ${status}`)
       } catch (err) {
         console.log(err);
       }
@@ -35,11 +42,15 @@ const TasksPage = ({ filter }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, status, pathname]);
+  }, [filter]);
 
-  const handleCreate = (()=>{
-    history.push('/tasks/create')
-    })
+  useEffect(()=>{
+    setFilteredTasks(tasks.results.filter((task) => task.status === status ))
+  },[status])
+
+  const handleCreate = () => {
+    history.push("/tasks/create");
+  };
 
   return (
     <Container fluid>
@@ -47,19 +58,25 @@ const TasksPage = ({ filter }) => {
         <Col xs={4}>
           <Card className={styles.GreenCard}>
             <Card.Title>Tasks ToDo</Card.Title>
-            <Card.Body className="text-center mt-4">0</Card.Body>
+            <Card.Body className="text-center mt-4">
+              {toDoTasks?.length}
+            </Card.Body>
           </Card>
         </Col>
         <Col xs={4}>
           <Card className={styles.GreenCard}>
             <Card.Title>Tasks In Progress</Card.Title>
-            <Card.Body className="text-center mt-4">0</Card.Body>
+            <Card.Body className="text-center mt-4">
+              {inProgressTasks?.length}
+            </Card.Body>
           </Card>
         </Col>
         <Col xs={4}>
           <Card className={styles.GreenCard}>
             <Card.Title>Tasks Completed</Card.Title>
-            <Card.Body className="text-center mt-4">0</Card.Body>
+            <Card.Body className="text-center mt-4">
+              {completedTasks?.length}
+            </Card.Body>
           </Card>
         </Col>
       </Row>
@@ -80,7 +97,7 @@ const TasksPage = ({ filter }) => {
         <Col xs={2}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
-            value="status=to_do"
+            value="to_do"
             className={styles.btnStatus}
           >
             To Do
@@ -89,7 +106,7 @@ const TasksPage = ({ filter }) => {
         <Col xs={2}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
-            value="status=in_progress"
+            value="in_progress"
             className={styles.btnStatus}
           >
             In Progress
@@ -98,7 +115,7 @@ const TasksPage = ({ filter }) => {
         <Col xs={2}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
-            value="status=completed"
+            value="completed"
             className={styles.btnStatus}
           >
             Completed
@@ -108,7 +125,7 @@ const TasksPage = ({ filter }) => {
       <Row>
         <hr></hr>
         <Col>
-          {tasks.results.map((task) => (
+          {filteredTasks.map((task) => (
             <Task key={task.id} {...task} setTasks={setTasks} />
           ))}
         </Col>
