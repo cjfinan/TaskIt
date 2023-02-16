@@ -23,7 +23,10 @@ const NavBar = () => {
       <NavLink to="/" className={styles.NavLink}>
         <Avatar src={currentUser?.profile_image} height={40} />
       </NavLink>
-      <NavLink to="/" className={styles.Navlink}>
+      <NavLink
+        to={`/profiles/${currentUser?.profile_id}`}
+        className={styles.Navlink}
+      >
         <span className="d-none d-md-inline">{currentUser?.username}</span>
       </NavLink>
       <NavLink to="/tasks/" className={styles.NavLink}>
