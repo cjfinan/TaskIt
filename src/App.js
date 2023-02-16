@@ -11,6 +11,7 @@ import TasksPage from "./pages/tasks/TasksPage";
 import { useCurrentUser } from "./components/context/CurrentUserContext";
 import TaskEditForm from "./pages/tasks/TaskEditForm";
 import BoardsPage from "./pages/boards/BoardsPage";
+import BoardPage from "./pages/boards/BoardPage";
 import BoardCreateForm from "./pages/boards/BoardCreateForm";
 
 function App() {
@@ -51,6 +52,13 @@ function App() {
                 path="/boards/"
                 render={() => (
                   <BoardsPage filter={`owner__profile=${profile_id}`} />
+                )}
+              />
+              <Route
+                exact
+                path="/boards/:id"
+                render={() => (
+                  <BoardPage filter={`owner__profile=${profile_id}`} />
                 )}
               />
               <Route

@@ -3,6 +3,9 @@ import { Button, Container, Row, Col } from 'react-bootstrap'
 import { useHistory, useLocation } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import Board from "./Board";
+import { Link } from "react-router-dom";
+import BoardPage from './BoardPage';
+
 
 const BoardsPage = ({filter}) => {
   const [boards, setBoards] = useState({ results: [] });
@@ -21,7 +24,7 @@ const BoardsPage = ({filter}) => {
         const { data } = await axiosReq.get(`/boards/?${filter}`);
         setBoards(data);
         setHasLoaded(true);
-        console.log(`Data: ${data}`);
+        console.log("DATA", data);
         console.log(`Filter: ${filter}`);
       } catch (err) {
         console.log(err);
@@ -46,7 +49,10 @@ const BoardsPage = ({filter}) => {
       <Row>
         <Col>
           {boards.results.map((board) => (
-            <Board key={board.id} {...board} setBoards={setBoards} />
+            <>
+              <Board key={board.id} {...board} setBoards={setBoards} />
+              <Link to={"/boards/" + board.id}>View board</Link>
+            </>
           ))}
         </Col>
       </Row>

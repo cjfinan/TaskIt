@@ -41,17 +41,20 @@ const Task = (props) => {
     };
 
   return (
-    <Card className={styles.TaskCard}>
+    <Card
+      className={`justify-content-center ${styles.TaskCard}`}
+    >
       <Row>
         <Col>{title && <Card.Title>{title}</Card.Title>}</Col>
         {status && <Col>{status}</Col>}
         {priority && <Col>{priority}</Col>}
         {board && <Col>{board}</Col>}
         {end_date && <Col>{end_date}</Col>}
-        {is_owner &&
+        {is_owner && (
           <Col>
             <DropdownMenu handleEdit={handleEdit} handleDelete={handleDelete} />
-          </Col>}
+          </Col>
+        )}
       </Row>
     </Card>
   );
