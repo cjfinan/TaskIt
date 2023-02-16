@@ -13,6 +13,7 @@ import TaskEditForm from "./pages/tasks/TaskEditForm";
 import BoardsPage from "./pages/boards/BoardsPage";
 import BoardPage from "./pages/boards/BoardPage";
 import BoardCreateForm from "./pages/boards/BoardCreateForm";
+import Profile from "./pages/Profiles/Profile";
 
 function App() {
   const currentUser = useCurrentUser()
@@ -65,6 +66,11 @@ function App() {
                 exact
                 path="/boards/create"
                 render={() => <BoardCreateForm />}
+              />
+              <Route
+                exact
+                path="/profiles/:id"
+                render={() => <Profile />}
               />
             </Col>
           </Switch>
