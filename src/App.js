@@ -26,11 +26,11 @@ function App() {
     <div className={styles.App}>
       <Container fluid>
         <Row>
-          <Col xs={2} md={3} className={styles.col}>
+          <Col xs={2} md={2} className={styles.col}>
             <NavBar />
           </Col>
           <Switch>
-            <Col xs={8}>
+            <Col>
               <Route exact path="/" render={() => <h1>Home</h1>} />
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />

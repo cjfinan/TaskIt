@@ -55,7 +55,7 @@ const TasksPage = ({ filter }) => {
   return (
     <Container fluid>
       <Row>
-        <Col xs={4}>
+        <Col xs={12} md={4}>
           <Card className={styles.GreenCard}>
             <Card.Title>Tasks ToDo</Card.Title>
             <Card.Body className="text-center mt-4">
@@ -63,7 +63,7 @@ const TasksPage = ({ filter }) => {
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={4}>
+        <Col xs={12} md={4}>
           <Card className={styles.GreenCard}>
             <Card.Title>Tasks In Progress</Card.Title>
             <Card.Body className="text-center mt-4">
@@ -71,7 +71,7 @@ const TasksPage = ({ filter }) => {
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={4}>
+        <Col xs={12} md={4}>
           <Card className={styles.GreenCard}>
             <Card.Title>Tasks Completed</Card.Title>
             <Card.Body className="text-center mt-4">
@@ -84,7 +84,7 @@ const TasksPage = ({ filter }) => {
         <Col xs={8}>
           <h3 className={styles.heading}>Tasks</h3>
         </Col>
-        <Col xs={4}>
+        <Col xs={4} className="my-auto text-center">
           <Button onClick={handleCreate} className={styles.btnCreate}>
             Create Task
           </Button>
@@ -94,7 +94,7 @@ const TasksPage = ({ filter }) => {
         <hr></hr>
       </Row>
       <Row>
-        <Col xs={2}>
+        <Col xs={12} md={3}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
             value="to_do"
@@ -103,7 +103,7 @@ const TasksPage = ({ filter }) => {
             To Do
           </Button>
         </Col>
-        <Col xs={2}>
+        <Col xs={12} md={3}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
             value="in_progress"
@@ -112,7 +112,7 @@ const TasksPage = ({ filter }) => {
             In Progress
           </Button>
         </Col>
-        <Col xs={2}>
+        <Col xs={12} md={3}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
             value="completed"

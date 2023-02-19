@@ -79,7 +79,6 @@ const NavBar = () => {
   return (
     <Row>
       <Col
-        xs={8}
         className={styles.Col}
       >
         <Nav className={styles.Sidebar}>

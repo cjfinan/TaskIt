@@ -41,14 +41,12 @@ const Task = (props) => {
     };
 
   return (
-    <Card
-      className={`justify-content-center ${styles.TaskCard}`}
-    >
+    <Card className={`justify-content-center ${styles.TaskCard}`}>
       <Row>
         <Col>{title && <Card.Title>{title}</Card.Title>}</Col>
-        {status && <Col>{status}</Col>}
-        {priority && <Col>{priority}</Col>}
-        {board && <Col>{board}</Col>}
+        {status && <Col className="d-none d-sm-block">{status}</Col>}
+        {priority && <Col className="d-none d-sm-block">{priority}</Col>}
+        {board && <Col className="d-none d-sm-block">{board}</Col>}
         {end_date && <Col>{end_date}</Col>}
         {is_owner && (
           <Col>
