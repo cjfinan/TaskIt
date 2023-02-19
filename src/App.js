@@ -15,6 +15,7 @@ import BoardPage from "./pages/boards/BoardPage";
 import BoardCreateForm from "./pages/boards/BoardCreateForm";
 import Profile from "./pages/Profiles/Profile";
 import ProfileEditForm from "./pages/Profiles/ProfileEditForm";
+import ProfilePasswordForm from "./pages/Profiles/ProfilePasswordForm";
 
 function App() {
   const currentUser = useCurrentUser()
@@ -73,6 +74,11 @@ function App() {
                 exact
                 path="/profiles/:id/edit"
                 render={() => <ProfileEditForm />}
+              />
+              <Route
+                exact
+                path="/profiles/:id/edit/password"
+                render={() => <ProfilePasswordForm />}
               />
             </Col>
           </Switch>
