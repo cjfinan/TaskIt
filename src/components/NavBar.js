@@ -41,7 +41,7 @@ const NavBar = () => {
         <i className="fas fa-sign-out-alt"></i>
         <span className="d-none d-md-inline">Sign out</span>
       </NavLink>
-      <NavLink to="/profiles/:id/edit/password" className={styles.NavLink}>
+      <NavLink to="/settings" className={styles.NavLink}>
         <i className="fa-solid fa-gear"></i>
       </NavLink>
     </>

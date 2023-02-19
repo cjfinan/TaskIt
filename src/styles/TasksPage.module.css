@@ -9,26 +9,32 @@
     margin-bottom: 20px;
     min-height: 150px;
     border-radius: 15px;
-    border: 0.5px solid #23395b;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .btnCreate{
     /* background-image: linear-gradient(20deg, #17252a, #2b7a78); */
-    background-color: #23395b;
+    background-color: #5D3FD3;
     border-radius: 15px;
-    color: #fffd98;
+    color: #fff;
+    border: none;
 }
 
 .btnStatus{
-    background-color: #59c9a5;
-    color: #23395b;
+    background-color: #5D3FD3;
+    color: #fff;
     border-radius: 15px;
     margin: 10px;
     text-align: center;
     align-items: center;
     padding: 5px;
     width: 100%;
+    border: none;
+}
+
+.btnCreate .btnStatus:hover{
+    background-color: #23395b;
+    transition: ease-in-out;
 }
 

@@ -3,22 +3,22 @@
     min-width: 60px;
     flex-direction: column;
     display: flex;
-    background-color: #23395b;
+    /* background-color: #23395b; */
+    background-color: #5D3FD3;
     margin-left: 10px;
     padding-left: 0;
     box-shadow: 3px 0 3px -1px #17252a;
 }
 
-.NavLink{
-    color: #fffd98;
+.NavLink {
+    color: #fff;
     margin-top: 3rem;
     padding-left: 5px;
 }
-
 .NavLink:hover{
     cursor: pointer;
     transition: color ease-in-out 0.2s;
-    color: #d81e5b;
+    color: #17252a;
 }
 
 .Active{
