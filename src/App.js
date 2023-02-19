@@ -17,6 +17,7 @@ import Profile from "./pages/Profiles/Profile";
 import ProfileEditForm from "./pages/Profiles/ProfileEditForm";
 import ProfilePasswordForm from "./pages/Profiles/ProfilePasswordForm";
 import ProfileUsernameForm from "./pages/Profiles/ProfileUsernameForm";
+import Settings from "./pages/Profiles/Settings";
 
 function App() {
   const currentUser = useCurrentUser()
@@ -85,6 +86,11 @@ function App() {
                 exact
                 path="/profiles/:id/edit/username"
                 render={() => <ProfileUsernameForm />}
+              />
+              <Route
+              exact
+              path="/settings"
+              render={()=> <Settings/> }
               />
             </Col>
           </Switch>
