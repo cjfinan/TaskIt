@@ -159,7 +159,7 @@ const TaskCreateForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-        <Col md={10}>
+        <Col>
           <Card>
             {textFields}
             {dateFields}
