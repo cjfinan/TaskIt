@@ -6,30 +6,27 @@ import { DropdownMenu } from "../../components/DropdownMenu";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../components/context/CurrentUserContext";
-import styles from "../../styles/Task.module.css";
-import TasksPage from "./TasksPage";
+import styles from "../../styles/TaskPage.module.css";
 
 const TaskPage = (props) => {
-        const {
-          owner,
-        } = props;
+  const { owner } = props;
 
-        const currentUser = useCurrentUser();
-        const is_owner = currentUser?.username === owner;
-        const history = useHistory();
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
+  const history = useHistory();
 
-        const handleDelete = async () => {
-          try {
-            axiosRes.delete(`/tasks/${id}/`);
-            history.goBack();
-          } catch (err) {
-            console.log(err);
-          }
-        };
+  const handleDelete = async () => {
+    try {
+      axiosRes.delete(`/tasks/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-        const handleEdit = () => {
-          history.push(`/tasks/${id}/edit`);
-        };
+  const handleEdit = () => {
+    history.push(`/tasks/${id}/edit`);
+  };
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
 
@@ -41,7 +38,7 @@ const TaskPage = (props) => {
         ]);
         setTask({ results: [task] });
         console.log(task);
-        console.log(task.title)
+        console.log(task.title);
       } catch (err) {
         console.log(err);
       }
@@ -51,14 +48,15 @@ const TaskPage = (props) => {
   return (
     <Card className={`mt-4 ${styles.TaskCard}`}>
       <Row>
-        <Col xs={9}>
+        <Col xs={8} className="mt-3">
           <Card.Title>{task.results[0] && task.results[0].title}</Card.Title>
           {task.results[0] && task.results[0].description}
         </Col>
-        <Col xs={3}>
-          <Row>
-            <h6>Status</h6>
-            {task.results[0] && task.results[0].status}
+
+        <Col xs={4} className={`${styles.StatusCol}`}>
+          <Row className="">
+            <p className={`mt-4 ${styles.SubHeading}`}>Status</p>
+            <p className="mt-4">{task.results[0] && task.results[0].status}</p>
             {task.results[0] && task.results[0].is_owner ? (
               <DropdownMenu
                 handleEdit={handleEdit}
@@ -69,16 +67,16 @@ const TaskPage = (props) => {
             )}
           </Row>
           <Row>
-            <h6>Priority</h6>
-            {task.results[0] && task.results[0].priority}
+            <p className={styles.SubHeading}>Priority</p>
+            <p>{task.results[0] && task.results[0].priority}</p>
           </Row>
           <Row>
-            <h6>End date</h6>
-            {task.results[0] && task.results[0].end_date}
+            <p className={styles.SubHeading}>End date</p>
+            <p>{task.results[0] && task.results[0].end_date}</p>
           </Row>
           <Row>
-            <h6>Board</h6>
-            {task.results[0] && task.results[0].Board}
+            <p className={styles.SubHeading}>Board</p>
+            <p>{task.results[0] && task.results[0].Board}</p>
           </Row>
         </Col>
       </Row>
