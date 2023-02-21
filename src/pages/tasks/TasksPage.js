@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Row, Card, Button, Container } from 'react-bootstrap'
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import styles from "../../styles/TasksPage.module.css";
 
 import { axiosReq } from '../../api/axiosDefaults';
 import Task from './Task';
+import Board from '../boards/Board';
 
 const TasksPage = ({ filter }) => {
   const [tasks, setTasks] = useState({ results: [] });
@@ -126,7 +127,9 @@ const TasksPage = ({ filter }) => {
         <hr></hr>
         <Col>
           {filteredTasks.map((task) => (
-            <Task key={task.id} {...task} setTasks={setTasks} />
+            <Link to={"/tasks/" + task.id}>
+              <Task key={task.id} {...task} setTasks={setTasks} />
+            </Link>
           ))}
         </Col>
       </Row>

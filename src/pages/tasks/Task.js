@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Col, Row } from "react-bootstrap";
 import { DropdownMenu } from '../../components/DropdownMenu';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../components/context/CurrentUserContext';
 import styles from '../../styles/Task.module.css'
@@ -43,7 +43,11 @@ const Task = (props) => {
   return (
     <Card className={`justify-content-center ${styles.TaskCard}`}>
       <Row>
-        <Col>{title && <Card.Title>{title}</Card.Title>}</Col>
+        <Col>
+          {title && (
+              <Card.Title> {title}</Card.Title>
+          )}
+        </Col>
         {status && <Col className="d-none d-sm-block">{status}</Col>}
         {priority && <Col className="d-none d-sm-block">{priority}</Col>}
         {board && <Col className="d-none d-sm-block">{board}</Col>}
