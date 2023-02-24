@@ -43,17 +43,26 @@ const Task = (props) => {
   return (
     <Card className={`justify-content-center ${styles.TaskCard}`}>
       <Row>
-        <Col>
-          {title && (
-              <Card.Title> {title}</Card.Title>
-          )}
+        <Col xs={6} sm={4}>
+          {title && <Card.Title> {title}</Card.Title>}
         </Col>
-        {status && <Col className="d-none d-sm-block">{status}</Col>}
-        {priority && <Col className="d-none d-sm-block">{priority}</Col>}
-        {board && <Col className="d-none d-sm-block">{board}</Col>}
-        {end_date && <Col>{end_date}</Col>}
+        {status && (
+          <Col sm={2} className="d-none d-sm-block">
+            {status}
+          </Col>
+        )}
+        {priority && (
+          <Col sm={2} className="d-none d-sm-block">
+            {priority}
+          </Col>
+        )}
+        {end_date && (
+          <Col xs={4} sm={2}>
+            {end_date}
+          </Col>
+        )}
         {is_owner && (
-          <Col>
+          <Col xs={1} sm={2}>
             <DropdownMenu handleEdit={handleEdit} handleDelete={handleDelete} />
           </Col>
         )}

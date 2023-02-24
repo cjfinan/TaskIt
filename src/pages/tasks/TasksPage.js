@@ -81,20 +81,17 @@ const TasksPage = ({ filter }) => {
           </Card>
         </Col>
       </Row>
-      <Row>
-        <Col xs={8}>
+      <Row className="mt-5">
+        <Col xs={6}>
           <h3 className={styles.heading}>Tasks</h3>
         </Col>
-        <Col xs={4} className="my-auto text-center">
+        <Col xs={6} className="my-auto text-center">
           <Button onClick={handleCreate} className={styles.btnCreate}>
             Create Task
           </Button>
         </Col>
       </Row>
-      <Row>
-        <hr></hr>
-      </Row>
-      <Row>
+      <Row className='mt-3'>
         <Col xs={12} md={3}>
           <Button
             onClick={(event) => setStatus(event.target.value)}
@@ -122,6 +119,21 @@ const TasksPage = ({ filter }) => {
             Completed
           </Button>
         </Col>
+      </Row>
+      <Row className="text-center mt-3">
+        <Col sm={4} className="d-none d-sm-block">
+          <h5>Title</h5>
+        </Col>
+        <Col sm={2} className="d-none d-sm-block">
+          <h5>Status</h5>
+        </Col>
+        <Col sm={2}>
+          <h5 className="d-none d-sm-block">Priority</h5>
+        </Col>
+        <Col sm={2} className="d-none d-sm-block">
+          <h5>End Date</h5>
+        </Col>
+        <Col></Col>
       </Row>
       <Row>
         <hr></hr>
